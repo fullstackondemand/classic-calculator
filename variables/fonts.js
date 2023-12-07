@@ -4,7 +4,7 @@ module.exports = {
     'inherit': 'inherit',
 
     /* Default Font Variables */
-    'default': 'Oswald',
+    'default': "'Inter', sans-serif",
 
     /* Alternate Font Variables */
     'alt': 'Open Sans',

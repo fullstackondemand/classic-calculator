@@ -1,0 +1,15 @@
+.inputBox {
+    div {
+        @apply text-warning-color font-default text-[24px] font-normal leading-[normal];
+        text-align: right;
+        word-wrap: break-word;
+    }
+}
+
+.currentInput {
+    @apply text-[32px] text-info-color #{!important};
+}
+
+.currentOutput {
+    @apply text-[48px] text-success-color #{!important};
+}
