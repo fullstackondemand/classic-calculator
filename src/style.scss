@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Bootstrap SCSS */
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+/* Tailwind SCSS */
+// @tailwind base;
+// @tailwind components;
+@tailwind utilities;
+
+
+/* Main SCSS */
+@import './sass/_styles';
