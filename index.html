@@ -4,17 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Node App</title>
+    <title>Classic Calculator</title>
     <link rel="stylesheet" href="dist/style.css">
 </head>
 
-<body>
+<body class="bg-secondary-color lg:bg-primary-color">
 
     <main>
-        <div class="container">
-            <div class="row bg-primary-color">
+        <div class="container-fluid px-0 py-md-4">
+            <div class="container max-w-[375px] md:rounded-[30px] bg-secondary-color h-100 p-4">
+
+                <div class="h-[300px] relative viewBox overflow-hidden">
+                    <span class="absolute bottom-0 right-0 inputBox w-100">
+
+                        <div class="currentInput">0</div>
+
+                    </span>
+                </div>
+
+                <div class="mt-4 row mx-0 justify-between">
+                    <button class="btn p-0 btn-primary clear">C</button>
+                    <button class="btn p-0 btn-success backspace">DE</button>
+                    <button class="btn p-0 btn-success operator">%</button>
+                    <button class="btn p-0 btn-success operator">/</button>
+                </div>
+
+                <div class="mt-4 row mx-0 justify-between">
+                    <button class="btn p-0 btn-secondary number">7</button>
+                    <button class="btn p-0 btn-secondary number">8</button>
+                    <button class="btn p-0 btn-secondary number">9</button>
+                    <button class="btn p-0 btn-success operator">*</button>
+                </div>
+
+                <div class="mt-4 row mx-0 justify-between">
+                    <button class="btn p-0 btn-secondary number">4</button>
+                    <button class="btn p-0 btn-secondary number">5</button>
+                    <button class="btn p-0 btn-secondary number">6</button>
+                    <button class="btn p-0 btn-success operator">-</button>
+                </div>
+
+                <div class="mt-4 row mx-0 justify-between">
+                    <button class="btn p-0 btn-secondary number">1</button>
+                    <button class="btn p-0 btn-secondary number">2</button>
+                    <button class="btn p-0 btn-secondary number">3</button>
+                    <button class="btn p-0 btn-success operator">+</button>
+                </div>
+
+                <div class="mt-4 row mx-0 justify-between">
+                    <button class="btn p-0 btn-secondary point">.</button>
+                    <button class="btn p-0 btn-secondary zero">00</button>
+                    <button class="btn p-0 btn-secondary number">0</button>
+                    <button class="btn p-0 btn-primary equal">=</button>
+                </div>
+
             </div>
         </div>
+
     </main>
 
     <script src="dist/main.js" type="module"></script>
