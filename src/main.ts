@@ -1,5 +1,5 @@
 const _inputbox = document.querySelector('.inputBox');
-const _operatorVal: Array<string> = ['+', '-', '/', '*', '%'];
+const _operatorVal: Array<string> = ['+', '-', '/', '*', '%', '.'];
 
 
 // Create New Element 
@@ -131,13 +131,39 @@ _zero?.addEventListener('click', () => {
         _currentInput.className = "";
         _currentOutput.className = "";
         let currentInput = _createNewElement('currentInput', "0");
-        if (_currentInput.textContent != '0') {
-            _currentInput.innerHTML += buttonText;
-        }
         _inputbox?.appendChild(currentInput);
     }
     else if (_currentInput) {
         if (_currentInput.textContent != '0') {
+            _currentInput.innerHTML += buttonText;
+        }
+    }
+});
+
+
+// Press Point Button Key
+const _point = document.querySelector('.point');
+_point?.addEventListener('click', () => {
+    let buttonText: string | null = _point.textContent;
+    const _currentInput = document.querySelector('.currentInput');
+    let inputVal: string = _currentInput?.textContent?.slice(-1) ?? "*";
+    const _currentOutput = document.querySelector('.currentOutput');
+
+    if (_currentInput && _currentOutput) {
+        _currentInput.className = "";
+        _currentOutput.className = "";
+        let currentInput = _createNewElement('currentInput', "0.");
+        _inputbox?.appendChild(currentInput);
+    }
+    else if (_currentInput) {
+        if (_operatorVal.indexOf(inputVal) != -1) {
+            if (inputVal == ".") {
+                _currentInput.innerHTML += "";
+                return true;
+            }
+            _currentInput.innerHTML += "0.";
+        }
+        else if (_currentInput.textContent?.indexOf('.') == -1) {
             _currentInput.innerHTML += buttonText;
         }
     }
