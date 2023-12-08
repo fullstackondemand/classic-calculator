@@ -84,3 +84,13 @@ document.querySelector('.equal')?.addEventListener('click', () => {
         }
     }
 });
+
+
+// Press Clear Button Key
+document.querySelector('.clear')?.addEventListener('click', () => {
+    if (_inputbox) {
+        _inputbox.innerHTML = "";
+        let currentInput = _createNewElement('currentInput', "0");
+        _inputbox?.appendChild(currentInput);
+    }
+});
