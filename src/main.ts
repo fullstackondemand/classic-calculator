@@ -94,3 +94,27 @@ document.querySelector('.clear')?.addEventListener('click', () => {
         _inputbox?.appendChild(currentInput);
     }
 });
+
+
+// Press Backspace Button Key
+document.querySelector('.backspace')?.addEventListener('click', () => {
+    let _lastChild = _inputbox?.lastElementChild?.className;
+    const _currentOutput = document.querySelector('.currentOutput');
+    const _currentInput = document.querySelector('.currentInput');
+
+    if (_currentInput && _lastChild == "currentInput") {
+        if (_currentInput?.textContent && _currentInput?.textContent.length == 1) {
+            _currentInput.innerHTML = '0';
+        }
+        else if (_currentInput?.textContent != '0') {
+            let input = _currentInput?.textContent?.slice(0, -1) ?? "0";
+            _currentInput.innerHTML = input;
+        }
+    }
+    else if (_lastChild == "currentOutput") {
+        _currentOutput?.remove();
+    }
+    else {
+        _lastChild = "currentInput";
+    }
+});
