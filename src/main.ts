@@ -118,3 +118,27 @@ document.querySelector('.backspace')?.addEventListener('click', () => {
         _lastChild = "currentInput";
     }
 });
+
+
+// Press Double Zero Button Key
+const _zero = document.querySelector('.zero');
+_zero?.addEventListener('click', () => {
+    let buttonText: string | null = _zero.textContent;
+    const _currentInput = document.querySelector('.currentInput');
+    const _currentOutput = document.querySelector('.currentOutput');
+
+    if (_currentInput && _currentOutput) {
+        _currentInput.className = "";
+        _currentOutput.className = "";
+        let currentInput = _createNewElement('currentInput', "0");
+        if (_currentInput.textContent != '0') {
+            _currentInput.innerHTML += buttonText;
+        }
+        _inputbox?.appendChild(currentInput);
+    }
+    else if (_currentInput) {
+        if (_currentInput.textContent != '0') {
+            _currentInput.innerHTML += buttonText;
+        }
+    }
+});
