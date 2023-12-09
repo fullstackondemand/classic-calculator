@@ -53,7 +53,10 @@ document.querySelectorAll('.operator').forEach(button => {
         }
         else if (_currentInput) {
             let inputVal: string = _currentInput.textContent?.slice(-1) ?? "*";
-            if (_currentInput.textContent != '0' && _operatorVal.indexOf(inputVal) == -1) {
+            if (inputVal === "%" && buttonText !== '%') {
+                _currentInput.innerHTML += buttonText;
+            }
+            else if (_currentInput.textContent != '0' && _operatorVal.indexOf(inputVal) == -1) {
                 _currentInput.innerHTML += buttonText;
             }
         }
@@ -64,22 +67,22 @@ document.querySelectorAll('.operator').forEach(button => {
 // Press Equal Button Key
 document.querySelector('.equal')?.addEventListener('click', () => {
     const _currentOutput = document.querySelector('.currentOutput');
-    const _currentInput = document.querySelector('.currentInput');
-    let inputVal: string = _currentInput?.textContent?.slice(-1) ?? "*";
+    let _currentInput = document.querySelector('.currentInput')?.textContent?.replace("%", "/100") ?? "0";
+    let inputVal: string = _currentInput.slice(-1) ?? "*";
     let execute = false;
 
     _operatorVal.forEach((operator) => {
-        if (_currentInput?.textContent?.indexOf(operator) != -1) {
+        if (_currentInput.indexOf(operator) != -1) {
             execute = true;
         }
     });
 
     if (_operatorVal.indexOf(inputVal) == -1 && execute) {
         if (_currentOutput) {
-            _currentOutput.textContent = eval(_currentInput?.textContent ?? "0");
+            _currentOutput.textContent = eval(_currentInput ?? "0");
         }
         else {
-            let currentOutput = _createNewElement('currentOutput', eval(_currentInput?.textContent ?? "0"));
+            let currentOutput = _createNewElement('currentOutput', eval(_currentInput ?? "0"));
             _inputbox?.appendChild(currentOutput);
         }
     }
