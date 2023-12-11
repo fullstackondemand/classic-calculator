@@ -1,49 +1,11 @@
 {
-  "name": "create-node-simple-app",
+  "name": "classic-calculator-app",
   "version": "1.0.0",
-  "description": "Create Simple NodeJs App with no build configuration.",
-  "main": "./index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/RestJS/create-node-simple-app",
-    "directory": "packages/create-node-simple-app"
-  },
-  "bin": {
-    "create-node-simple-app": "./index.js"
-  },
-  "files": [
-    ".vscode",
-    "extensions.json",
-    "src",
-    "sass",
-    "_styles.scss",
-    "main.ts",
-    "style.scss",
-    "variables",
-    "variables/colors.js",
-    "variables/fonts.js",
-    "gulpfile.js",
-    "index.html",
-    "index.js",
-    "package.json",
-    "README.md",
-    "tailwind.config.js",
-    "tsconfig.json"
-  ],
+  "description": "Create a calculator with the help of TypeScript and SASS.",
   "keywords": [
-    "Sass",
-    "TypeScript",
-    "Tailwind",
-    "Gulp",
-    "Bootstrap",
-    "NodeJs"
+    "calculator",
+    "nodejs-app"
   ],
-  "author": "Pramod Singh Gusian <spramodgusian@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RestJS/create-node-simple-app/issues"
-  },
-  "homepage": "https://github.com/RestJS/create-node-simple-app#readme",
   "scripts": {
     "gulp": "gulp",
     "start": "gulp",
