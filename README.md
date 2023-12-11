@@ -1,16 +1,9 @@
-# Simple NodeJs App
+# Classic Calculator
+Create a **Calculator** with help of `Sass`, `TypeScript`, `Tailwind`, `Gulp`, `Bootstrap` and `NodeJs`.
 
-This is create for start **Simple NodeJs App** and easily manage and scale your site.
-
-## Used Packages
-
-> `Sass`, `TypeScript`, `Tailwind`, `Gulp`, `Bootstrap`, `NodeJs`
-
-#### Getting started
-
-Run Gulp for covert TypeScript and SCSS to JavaScript and CSS command:-
-
-1. `npm run gulp` for start **gulp**.
-2. `npm run start` for start **gulp**.
-3. `npm run build` for build **gulp**.
-4. `npm run watch` for watch **gulp**.
+## Used Feature
+- Get the **Sum <small>as</small> '+'** of two digits.
+- Get the **Subtract <small>as</small> '-'** of two digits.
+- Get the **Division <small>as</small> '/'** of two digits.
+- Get the **Multiply <small>as</small> '*'** of two digits.
+- Get the **Percentage <small>as</small> '%'** of any digit.
