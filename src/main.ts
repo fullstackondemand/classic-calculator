@@ -1,173 +1,21 @@
 const _inputbox = document.querySelector('.inputBox');
-const _operatorVal: Array<string> = ['+', '-', '/', '*', '%', '.'];
+let isPoint = true;
+let operator = "";
 
 
-// Create New Element 
-const _createNewElement = (className: string, textContent: string) => {
-    let div = document.createElement('div');
-    div.className = className;
-    div.innerHTML = textContent ?? '0';
-    return div;
-}
+// Press Key Interaction
+document.querySelector('body')?.addEventListener('keydown', e => {
+    let textContent = e.key;
+    let operations = _operation.filter(items => _includes(items.value, textContent));
+    operations?.forEach(operation => operation.funcs(textContent));
+})
 
 
-// Press Number Button Key
-document.querySelectorAll('.number').forEach(button => {
+// Click Button 
+document.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', () => {
-        let buttonText: string | null = button.textContent;
-        const _currentInput = document.querySelector('.currentInput');
-        const _currentOutput = document.querySelector('.currentOutput');
-
-        if (_currentInput && _currentOutput) {
-            _currentInput.className = "";
-            _currentOutput.className = "";
-            let currentInput = _createNewElement('currentInput', buttonText ?? "0");
-            _inputbox?.appendChild(currentInput);
-        }
-        else if (_currentInput) {
-            if (_currentInput.textContent == '0') {
-                _currentInput.textContent = buttonText;
-            }
-            else {
-                _currentInput.innerHTML += buttonText;
-            }
-        }
-    });
-});
-
-
-// Press Operator Button Key
-document.querySelectorAll('.operator').forEach(button => {
-    button.addEventListener('click', () => {
-        let buttonText: string | null = button.textContent;
-        const _currentInput = document.querySelector('.currentInput');
-        const _currentOutput = document.querySelector('.currentOutput');
-
-        if (_currentInput && _currentOutput) {
-            _currentInput.className = "";
-            _currentOutput.className = "currentInput";
-            let currentInput = document.querySelector('.currentInput');
-            if (currentInput) {
-                currentInput.innerHTML += buttonText;
-            }
-        }
-        else if (_currentInput) {
-            let inputVal: string = _currentInput.textContent?.slice(-1) ?? "*";
-            if (inputVal === "%" && buttonText !== '%') {
-                _currentInput.innerHTML += buttonText;
-            }
-            else if (_currentInput.textContent != '0' && _operatorVal.indexOf(inputVal) == -1) {
-                _currentInput.innerHTML += buttonText;
-            }
-        }
-    });
-});
-
-
-// Press Equal Button Key
-document.querySelector('.equal')?.addEventListener('click', () => {
-    const _currentOutput = document.querySelector('.currentOutput');
-    let _currentInput = document.querySelector('.currentInput')?.textContent?.replace("%", "/100") ?? "0";
-    let inputVal: string = _currentInput.slice(-1) ?? "*";
-    let execute = false;
-
-    _operatorVal.forEach((operator) => {
-        if (_currentInput.indexOf(operator) != -1) {
-            execute = true;
-        }
-    });
-
-    if (_operatorVal.indexOf(inputVal) == -1 && execute) {
-        if (_currentOutput) {
-            _currentOutput.textContent = eval(_currentInput ?? "0");
-        }
-        else {
-            let currentOutput = _createNewElement('currentOutput', eval(_currentInput ?? "0"));
-            _inputbox?.appendChild(currentOutput);
-        }
-    }
-});
-
-
-// Press Clear Button Key
-document.querySelector('.clear')?.addEventListener('click', () => {
-    if (_inputbox) {
-        _inputbox.innerHTML = "";
-        let currentInput = _createNewElement('currentInput', "0");
-        _inputbox?.appendChild(currentInput);
-    }
-});
-
-
-// Press Backspace Button Key
-document.querySelector('.backspace')?.addEventListener('click', () => {
-    let _lastChild = _inputbox?.lastElementChild?.className;
-    const _currentOutput = document.querySelector('.currentOutput');
-    const _currentInput = document.querySelector('.currentInput');
-
-    if (_currentInput && _lastChild == "currentInput") {
-        if (_currentInput?.textContent && _currentInput?.textContent.length == 1) {
-            _currentInput.innerHTML = '0';
-        }
-        else if (_currentInput?.textContent != '0') {
-            let input = _currentInput?.textContent?.slice(0, -1) ?? "0";
-            _currentInput.innerHTML = input;
-        }
-    }
-    else if (_lastChild == "currentOutput") {
-        _currentOutput?.remove();
-    }
-    else {
-        _lastChild = "currentInput";
-    }
-});
-
-
-// Press Double Zero Button Key
-const _zero = document.querySelector('.zero');
-_zero?.addEventListener('click', () => {
-    let buttonText: string | null = _zero.textContent;
-    const _currentInput = document.querySelector('.currentInput');
-    const _currentOutput = document.querySelector('.currentOutput');
-
-    if (_currentInput && _currentOutput) {
-        _currentInput.className = "";
-        _currentOutput.className = "";
-        let currentInput = _createNewElement('currentInput', "0");
-        _inputbox?.appendChild(currentInput);
-    }
-    else if (_currentInput) {
-        if (_currentInput.textContent != '0') {
-            _currentInput.innerHTML += buttonText;
-        }
-    }
-});
-
-
-// Press Point Button Key
-const _point = document.querySelector('.point');
-_point?.addEventListener('click', () => {
-    let buttonText: string | null = _point.textContent;
-    const _currentInput = document.querySelector('.currentInput');
-    let inputVal: string = _currentInput?.textContent?.slice(-1) ?? "*";
-    const _currentOutput = document.querySelector('.currentOutput');
-
-    if (_currentInput && _currentOutput) {
-        _currentInput.className = "";
-        _currentOutput.className = "";
-        let currentInput = _createNewElement('currentInput', "0.");
-        _inputbox?.appendChild(currentInput);
-    }
-    else if (_currentInput) {
-        if (_operatorVal.indexOf(inputVal) != -1) {
-            if (inputVal == ".") {
-                _currentInput.innerHTML += "";
-                return true;
-            }
-            _currentInput.innerHTML += "0.";
-        }
-        else if (_currentInput.textContent?.indexOf('.') == -1) {
-            _currentInput.innerHTML += buttonText;
-        }
-    }
-});
+        let textContent = button.textContent ?? "0";
+        let operations = _operation.filter(items => _includes(items.value, textContent));
+        operations?.forEach(operation => operation.funcs(textContent));
+    })
+})
